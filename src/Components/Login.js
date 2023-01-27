@@ -8,14 +8,27 @@ export default function Login() {
    const navigate = useNavigate();
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
+    const [errors,setErrors] = useState({error:false,msg:""});
 
     const data={email,password}
+    const emailvalidation = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     const submitForm = () =>{
     fetchData("url","token",data)
     if(email==="abc" && password==="12345"){
         navigate("/dashboard")
     }
+    if(email===""){
+        setErrors({error:true, msg:"Please Fill Your Email"})
+    }
+    else if(!emailvalidation.test(email)){
+        setErrors({error:true, msg:"Please Fill Valid Email"})
+    }
+    else if(password===""){
+        setErrors({error:true, msg:"Please Fill Your Password"})
+    }
+
+    
     }
 
     return(
@@ -35,6 +48,12 @@ export default function Login() {
                         <input type="password" className="form-control" placeholder="Enter password"
                             onChange={e => setPassword(e.target.value)}
                         id="pwd" />
+                    </div>
+
+                    <div className="form-group mt-3">
+                        <div className="errors">
+                            {errors.error === true && (<div className="errors">{errors.msg}</div>)}
+                        </div>
                     </div>
                     <button type="button" onClick={submitForm} className="btn btn-primary mt-4">Login</button>
                 </div>
