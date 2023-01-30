@@ -5,9 +5,9 @@ export async function fetchData(url, token, data = "") {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
+                // Authorization: `Bearer ${token}`,
             },
-            body: data
+            body: JSON.stringify(data)
         });
         return getData;
     } catch (error) {
@@ -15,3 +15,4 @@ export async function fetchData(url, token, data = "") {
         return 'errorDetails';
     }
 }
+
