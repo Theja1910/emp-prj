@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { fetchData } from "../Auth/Helper";
+import { toast } from "react-toastify";
+import "../Components/App.css"
 //import AuthUser from './AuthUser';
 
 export default function Login() {
@@ -32,8 +34,16 @@ export default function Login() {
         }
         else
         {
-            fetchData("http://localhost:8080/emp/loginPageVerify", "", data).then((res) => {
+            fetchData("http://localhost:8080/emp/loginPageVerify", "", data).then((res) =>
+             {
                 console.log(res,"data");
+                if (res.email) {
+                    alert('Login successfully.')
+                    navigate('/dashboard');
+                } 
+                else {
+                    toast.warn("Login Failed please enter correct email")
+                }
                 //navigate('/dashboard');
             })
         }
