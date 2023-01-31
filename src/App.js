@@ -18,7 +18,7 @@ import { ToastContainer } from 'react-toastify';
 // }
 function App() {
   return (
-    <div className="App">
+      <div className="App">
       <ToastContainer theme='colored' position='top-center'></ToastContainer>
       <Auth />
       
