@@ -15,4 +15,21 @@ export async function fetchData(url, token, data = "") {
         return 'errorDetails';
     }
 }
+// export async function getFetchData(url, token, data = "") {
+//     try {
+//         console.log(url, "newUrl");
+//         const getData = await fetch(url, {
+//             method: "GET",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 // Authorization: `Bearer ${token}`,
+//             },
+//             body: JSON.stringify(data)
+//         });
+//         return getData;
+//     } catch (error) {
+//         console.log("errorDetails", "error");
+//         return 'errorDetails';
+//     }
+// }
 

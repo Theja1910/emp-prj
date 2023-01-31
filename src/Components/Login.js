@@ -14,15 +14,13 @@ export default function Login() {
     const emailvalidation = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     const submitForm = () => {
-        fetchData("localhost:8080/emp/loginPageVerify", "token", data).then((res) => {
-            navigate('/login');
-        })
-        if (email === "abc" && password === "1234") {
-            navigate("/dashboard")
-        }
-        else {
-            alert("Please enter Valid Input Fields");
-        }
+       
+        // if (email === "" && password === "1234") {
+        //     navigate("/dashboard")
+        // }
+        // else {
+        //     alert("Please enter Valid Input Fields");
+        // }
         if (email === "") {
             setErrors({ error: true, msg: "Please Fill Your Email" })
         }
@@ -31,6 +29,13 @@ export default function Login() {
         }
         else if (password === "") {
             setErrors({ error: true, msg: "Please Fill Your Password" })
+        }
+        else
+        {
+            fetchData("http://localhost:8080/emp/loginPageVerify", "", data).then((res) => {
+                console.log(res,"data");
+                //navigate('/dashboard');
+            })
         }
 
 

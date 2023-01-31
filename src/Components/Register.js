@@ -76,9 +76,9 @@ const Register = () => {
             lastName: lname,
             email,
             contactNo: phone,
-            address:
+            employeeAddress:
             {
-                city, zipcode, state
+                address,city, zipcode, state
             },
             password
         };
@@ -154,7 +154,7 @@ const Register = () => {
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="form-group">
-                                        <label>Address</label>
+                                        <label> Address</label>
                                         <input value={address} onChange={e => addresschange(e.target.value)} className="form-control" />
                                     </div>
                                 </div>
