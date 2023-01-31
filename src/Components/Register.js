@@ -80,7 +80,7 @@ const Register = () => {
         };
         //if (IsValidate()) {
         //console.log(data);
-        fetchData("http://localhost:8080/emp/registration", data)
+        fetchData("http://localhost:8080/emp/registration","", data)
             .then((res) => {
                 toast.success('Registered successfully.')
                 navigate('/login');
@@ -122,6 +122,12 @@ const Register = () => {
                                 </div> */}
                                 <div className="col-lg-6">
                                     <div className="form-group">
+                                        <label>Email <span className="errmsg">*</span></label>
+                                        <input value={email} onChange={e => emailchange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
                                         <label>FirstName  <span className="errmsg">*</span></label>
                                         <input value={fname} onChange={e => fnamechange(e.target.value)} className="form-control"></input>
                                     </div>
@@ -132,26 +138,11 @@ const Register = () => {
                                         <input value={lname} onChange={e => lnamechange(e.target.value)} className="form-control"></input>
                                     </div>
                                 </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Email <span className="errmsg">*</span></label>
-                                        <input value={email} onChange={e => emailchange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
+                                
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Phone <span className="errmsg"></span></label>
                                         <input value={phone} onChange={e => phonechange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>State <span className="errmsg">*</span></label>
-                                        <select value={state} onChange={e => statechange(e.target.value)} className="form-control">
-                                            <option value="india">TamilNadu</option>
-                                            <option value="usa">Karnataka</option>
-                                            <option value="singapore">Kerala</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div className="col-lg-12">
@@ -169,9 +160,21 @@ const Register = () => {
                                 <div className="col-lg-12">
                                     <div className="form-group">
                                         <label>ZipCode</label>
-                                        <input value={zipcode} onChange={e => zipcodechange(e.target.value)} className="form-control" />
+                                        <input value={zipcode} onChange={e => zipcodechange(e.target.value)} type="number"className="form-control" />
                                     </div>
                                 </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>State <span className="errmsg">*</span></label>
+                                        <select value={state} onChange={e => statechange(e.target.value)} className="form-control">
+                                            <option value="india">TamilNadu</option>
+                                            <option value="usa">Karnataka</option>
+                                            <option value="singapore">Kerala</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                               
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Password <span className="errmsg">*</span></label>
