@@ -82,8 +82,13 @@ const Register = () => {
         //console.log(data);
         fetchData("http://localhost:8080/emp/registration", data)
             .then((res) => {
-                toast.success('Registered successfully.')
-                navigate('/login');
+
+                if (res.empId) {
+                    toast.success('Registered successfully.')
+                    navigate('/login');
+                } else {
+                    toast.warn("Register not successful")
+                }
             })
         //  .catch((err) => {
         //     toast.error('Failed :' + err.message);
@@ -99,8 +104,6 @@ const Register = () => {
                             <h1>Employee Registeration</h1>
                         </div>
                         <div className="card-body">
-
-
                             <div className="row">
                                 <div className="col-lg-6">
                                     <div className="form-group">
@@ -147,7 +150,7 @@ const Register = () => {
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>State <span className="errmsg">*</span></label>
-                                        <select value={state} onChange={e => statechange(e.target.value)} className="form-control">
+                                        <select name="state" onChange={e => { statechange(e.target.value) }} className="form-control">
                                             <option value="india">TamilNadu</option>
                                             <option value="usa">Karnataka</option>
                                             <option value="singapore">Kerala</option>
