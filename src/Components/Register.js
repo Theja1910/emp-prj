@@ -28,8 +28,7 @@ const Register = () => {
         //     isproceed = false;
         //     errormessage += ' Username';
         // }
-        if (empid === null || empid === '') 
-        {
+        if (empid === null || empid === '') {
             isproceed = false;
             errormessage += ' Employee Id';
         }
@@ -50,12 +49,12 @@ const Register = () => {
             errormessage += ' Email';
         }
 
-        if(!isproceed){
+        if (!isproceed) {
             toast.warning(errormessage)
-        }else{
-            if(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)){
+        } else {
+            if (/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)) {
 
-            }else{
+            } else {
                 isproceed = false;
                 toast.warning('Please enter the valid email')
             }
@@ -65,27 +64,30 @@ const Register = () => {
 
 
     const handlesubmit = (e) => {
-            e.preventDefault();
-            let regobj = { 
-                empid, 
-                fname,
-                lname,  
-                email, 
-                phone,  
-                address:
-                {
-                city, state,zipcode},
-                password};
-            //if (IsValidate()) {
-            //console.log(regobj);
-            fetchData("http://localhost:8080/emp/registration")
+        e.preventDefault();
+        // const address = { "empId": "323546", "firstName": "Divya", "lastName": "singh", "email": "rajnish.singh@perficient.com", "contactNo": 676674447, "address": { "city": "Bangalore", "state": "Karnataka", "zipcode": 5768688 }, "password": "Shabaz" }
+        let data = {
+            empId: empid,
+            firstName: fname,
+            lastName: lname,
+            email,
+            contactNo: phone,
+            address:
+            {
+                city, state, zipcode
+            },
+            password
+        };
+        //if (IsValidate()) {
+        //console.log(data);
+        fetchData("http://localhost:8080/emp/registration", data)
             .then((res) => {
                 toast.success('Registered successfully.')
                 navigate('/login');
-             })
-            //  .catch((err) => {
-            //     toast.error('Failed :' + err.message);
-            // });
+            })
+        //  .catch((err) => {
+        //     toast.error('Failed :' + err.message);
+        // });
         //}
     }
     return (
@@ -97,7 +99,7 @@ const Register = () => {
                             <h1>Employee Registeration</h1>
                         </div>
                         <div className="card-body">
-                            
+
 
                             <div className="row">
                                 <div className="col-lg-6">
@@ -118,7 +120,7 @@ const Register = () => {
                                         <input value={id} onChange={e => idchange(e.target.value)} className="form-control"></input>
                                     </div>
                                 </div> */}
-                                
+
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>FirstName  <span className="errmsg">*</span></label>
