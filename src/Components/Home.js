@@ -1,5 +1,5 @@
 export default function Home() {
     return(
-        <div>Home page</div>
+        <div>Welcome to Employee Page</div>
     )
 }

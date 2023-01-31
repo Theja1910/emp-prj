@@ -87,7 +87,7 @@ const Register = () => {
             fetchData("http://localhost:8080/emp/registration", "", data)
                 .then((res) => {
 
-                    if (res.empId) {
+                    if (res) {
                         toast.success('Registered successfully.')
                         navigate('/login');
                     } else {
