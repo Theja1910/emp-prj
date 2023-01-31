@@ -4,7 +4,7 @@ import Papa from "papaparse";
 import "../Components/App.css"
 
 export default function EmployeeUpload() {
-    const [parsedData, setParsedData] = useState([]);
+  const [parsedData, setParsedData] = useState([]);
 
   //State to store table Column name
   const [tableRows, setTableRows] = useState([]);
@@ -75,4 +75,3 @@ export default function EmployeeUpload() {
     </div>
   );
 }
-  
