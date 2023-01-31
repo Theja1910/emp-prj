@@ -15,8 +15,11 @@ export default function Login() {
 
     const submitForm = () =>{
     fetchData("url","token",data)
-    if(email==="abc" && password==="12345"){
+    if(email==="abc" && password==="1234"){
         navigate("/dashboard")
+    }
+    else{
+        alert("Please enter Valid Input Fields");
     }
     if(email===""){
         setErrors({error:true, msg:"Please Fill Your Email"})
