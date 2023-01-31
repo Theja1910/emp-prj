@@ -44,6 +44,10 @@ const Register = () => {
             isproceed = false;
             errormessage += ' Password';
         }
+        if (state === null || state === '') {
+            isproceed = false;
+            errormessage += ' State';
+        }
         if (email === null || email === '') {
             isproceed = false;
             errormessage += ' Email';
@@ -74,26 +78,26 @@ const Register = () => {
             contactNo: phone,
             address:
             {
-                city, state, zipcode
+                city, zipcode, state
             },
             password
         };
-        //if (IsValidate()) {
-        //console.log(data);
-        fetchData("http://localhost:8080/emp/registration", data)
-            .then((res) => {
+        if (IsValidate()) {
+            //console.log(data);
+            fetchData("http://localhost:8080/emp/registration", "", data)
+                .then((res) => {
 
-                if (res.empId) {
-                    toast.success('Registered successfully.')
-                    navigate('/login');
-                } else {
-                    toast.warn("Register not successful")
-                }
-            })
-        //  .catch((err) => {
-        //     toast.error('Failed :' + err.message);
-        // });
-        //}
+                    if (res.empId) {
+                        toast.success('Registered successfully.')
+                        navigate('/login');
+                    } else {
+                        toast.warn("Register not successful")
+                    }
+                })
+            //  .catch((err) => {
+            //     toast.error('Failed :' + err.message);
+            // });
+        }
     }
     return (
         <div>
@@ -125,6 +129,12 @@ const Register = () => {
                                 </div> */}
                                 <div className="col-lg-6">
                                     <div className="form-group">
+                                        <label>Email <span className="errmsg">*</span></label>
+                                        <input value={email} onChange={e => emailchange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
                                         <label>FirstName  <span className="errmsg">*</span></label>
                                         <input value={fname} onChange={e => fnamechange(e.target.value)} className="form-control"></input>
                                     </div>
@@ -135,26 +145,11 @@ const Register = () => {
                                         <input value={lname} onChange={e => lnamechange(e.target.value)} className="form-control"></input>
                                     </div>
                                 </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Email <span className="errmsg">*</span></label>
-                                        <input value={email} onChange={e => emailchange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
+
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Phone <span className="errmsg"></span></label>
                                         <input value={phone} onChange={e => phonechange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>State <span className="errmsg">*</span></label>
-                                        <select name="state" onChange={e => { statechange(e.target.value) }} className="form-control">
-                                            <option value="india">TamilNadu</option>
-                                            <option value="usa">Karnataka</option>
-                                            <option value="singapore">Kerala</option>
-                                        </select>
                                     </div>
                                 </div>
                                 <div className="col-lg-12">
@@ -172,39 +167,41 @@ const Register = () => {
                                 <div className="col-lg-12">
                                     <div className="form-group">
                                         <label>ZipCode</label>
-                                        <input value={zipcode} onChange={e => zipcodechange(e.target.value)} className="form-control" />
+                                        <input value={zipcode} onChange={e => zipcodechange(e.target.value)} type="number" className="form-control" />
                                     </div>
                                 </div>
+
                                 <div className="col-lg-6">
                                     <div className="form-group">
                                         <label>Password <span className="errmsg">*</span></label>
                                         <input value={password} onChange={e => passwordchange(e.target.value)} type="password" className="form-control"></input>
                                     </div>
                                 </div>
-                                {/* <div className="col-lg-6">
+                                <div className="col-lg-6">
                                     <div className="form-group">
-                                        <label>Gender</label>
-                                        <br></br>
-                                        <input type="radio" checked={gender === 'male'} onChange={e => genderchange(e.target.value)} name="gender" value="male" className="app-check"></input>
-                                        <label>Male</label>
-                                        <input type="radio" checked={gender === 'female'} onChange={e => genderchange(e.target.value)} name="gender" value="female" className="app-check"></input>
-                                        <label>Female</label>
+                                        <label>State <span className="errmsg">*</span></label>
+                                        <select value={state} onChange={e => statechange(e.target.value)} className="form-control">
+                                            <option value="">Select State</option>
+                                            <option value="tamilnadu">TamilNadu</option>
+                                            <option value="karnataka">Karnataka</option>
+                                            <option value="kerala">Kerala</option>
+                                        </select>
                                     </div>
-                                </div> */}
+                                </div>
 
-                            </div>
+                            </div >
 
-                        </div>
+                        </div >
                         <div className="card-footer">
                             <button type="submit" className="btn btn-primary">Register</button> |
                             <Link to={'/login'} className="btn btn-danger">Login</Link>
                         </div>
-                    </div>
-                </form>
-            </div>
+                    </div >
+                </form >
+            </div >
 
 
-        </div>
+        </div >
     );
 }
 
