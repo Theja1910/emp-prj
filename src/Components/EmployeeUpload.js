@@ -54,8 +54,11 @@ export default function EmployeeUpload() {
         method: 'POST',
         body: formData
       });
-      const data = await response.json();
-      console.log(data);
+      // const data = await response;
+      // console.log(data);
+      if (response.status === 200) {
+        console.log("file uploaded successfully")
+      }
     } catch (error) {
       console.error(error);
     }
