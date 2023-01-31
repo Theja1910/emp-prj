@@ -1,220 +1,207 @@
-import { useState } from "react"
-import {  useNavigate } from 'react-router-dom';
+
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import { fetchData } from "../Auth/Helper";
-//import AuthUser from './AuthUser';
 
-export default function Register() {
+const Register = () => {
+
+    //const [id, idchange] = useState("");
+    const [empid, empidchange] = useState("");
+    const [fname, fnamechange] = useState("");
+    const [lname, lnamechange] = useState("");
+    const [password, passwordchange] = useState("");
+    const [email, emailchange] = useState("");
+    const [phone, phonechange] = useState("");
+    const [address, addresschange] = useState("");
+    const [state, statechange] = useState("");
+    const [city, citychange] = useState("");
+    const [zipcode, zipcodechange] = useState("");
+    // const [gender, genderchange] = useState("female");
+
     const navigate = useNavigate();
-    // const {http,setToken} = AuthUser();
-    const [empid, setEmpId] = useState();
-    const [fname, setFName] = useState();
-    const [lname, setLname] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
-    const [city, setCity] = useState("");
-    const [zipcode,setZipcode] = useState("");
-    const [password, setPassword] = useState("");
-    const [stateNames,setStateNames]= useState(["TamilNadu","Karnataka","Kerala"]);
-    const [statevalue,setStateValue]= useState("");
-    const [errors,setErrors] = useState({error:false,msg:""});
 
-    const data = { empid,fname, lname,email,phone, address,password }
-    const emailvalidation = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    const IsValidate = () => {
+        let isproceed = true;
+        let errormessage = 'Please enter the value in ';
+        // if (empid === null || empid === '') {
+        //     isproceed = false;
+        //     errormessage += ' Username';
+        // }
+        if (empid === null || empid === '') 
+        {
+            isproceed = false;
+            errormessage += ' Employee Id';
+        }
+        if (fname === null || fname === '') {
+            isproceed = false;
+            errormessage += ' Firstname';
+        }
+        if (lname === null || lname === '') {
+            isproceed = false;
+            errormessage += ' Lastname';
+        }
+        if (password === null || password === '') {
+            isproceed = false;
+            errormessage += ' Password';
+        }
+        if (email === null || email === '') {
+            isproceed = false;
+            errormessage += ' Email';
+        }
 
-    const submitForm = () => {
-     if(empid===""){
-            setErrors({error:true, msg:"Please Fill Your Employee Id"})
-        }
-        else if(fname===""){
-            setErrors({error:true, msg:"Please Fill Your First Name"})
-        }
-        else if(lname===""){
-            setErrors({error:true, msg:"Please Fill Your Last Name"})
-        }
-        else if(email===""){
-            setErrors({error:true, msg:"Please Fill Your Correct Email"})
-        }
-        else if(!emailvalidation.test(email)){
-            setErrors({error:true, msg:"Please Fill Valid Email"})
-        }
-        else if(phone===""){
-            setErrors({error:true, msg:"Please Fill Your Contact Number"})
-        }
-        else if(address===""){
-            setErrors({error:true, msg:"Please Fill Your Address"})
-        }
-        else if(city===""){
-            setErrors({error:true, msg:"Please Fill Your City"})
-        }
-        else if(zipcode===""){
-            setErrors({error:true, msg:"Please Fill Your ZipCode"})
-        }
-        else if(password===""){
-            setErrors({error:true, msg:"Please Fill Your Password"})
-        }
-        else{
-        console.log(data, "formdata")
-        fetchData("url", "token", data)
+        if(!isproceed){
+            toast.warning(errormessage)
+        }else{
+            if(/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email)){
 
-        setEmpId("")
-        setFName("")
-        setLname("")
-        setEmail("")
-        setPhone("")
-        setAddress("")
-        setCity("")
-        navigate("/login")
+            }else{
+                isproceed = false;
+                toast.warning('Please enter the valid email')
+            }
         }
-        
-
-
-
+        return isproceed;
     }
 
-    
-    const handlestate = (e)=>
-    {
-        const stateid = e.target.value;
-        setStateValue(stateid);
-        console.log(stateid);
-    }
 
+    const handlesubmit = (e) => {
+            e.preventDefault();
+            let regobj = { 
+                empid, 
+                fname,
+                lname,  
+                email, 
+                phone,  
+                address:
+                {
+                city, state,zipcode},
+                password};
+            //if (IsValidate()) {
+            //console.log(regobj);
+            fetchData("http://localhost:8080/emp/registration")
+            .then((res) => {
+                toast.success('Registered successfully.')
+                navigate('/login');
+             })
+            //  .catch((err) => {
+            //     toast.error('Failed :' + err.message);
+            // });
+        //}
+    }
     return (
-        <div className="row justify-content-left pt-5">
-            <div className="col-sm-6">
-                <div className="card p-4">
-                    <h1 className="text-center mb-3">Employee Registration </h1>
-                    <div className="form-group">
-                        <label>Employee ID:</label>
-                        <input type="empid" 
-                        className="form-control" 
-                        value={empid} 
-                        placeholder="Enter your Employee Id"
-                        onChange={e => setEmpId(e.target.value)}
-                        id="empid" 
-                        required />
-                    </div>
-                    <div className="form-group">
-                        <label>First Name:</label>
-                        <input type="test" 
-                        className="form-control" 
-                        value={fname} 
-                        placeholder="Enter your first name"
-                        onChange={e => setFName(e.target.value)}
-                        id="fname" 
-                        required />
-                    </div>
-                    <div className="form-group">
-                        <label>Last Name:</label>
-                        <input type="test" 
-                        className="form-control" 
-                        value={lname} 
-                        placeholder="Enter Your Last name"
-                        onChange={e => setLname(e.target.value)}
-                        id="lname" 
-                        required />
-                    </div>
-                    <div className="form-group">
-                        <label>Email address:</label>
-                        <input type="email" 
-                        className="form-control" 
-                        value={email}
-                        placeholder="Enter email"
-                        onChange={e => setEmail(e.target.value)} 
-                        id="email" required />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Contact Number:</label>
-                        <input type="number" min = "1" max="10"
-                        className="form-control" 
-                        value={phone} 
-                        placeholder="Enter Your Contact Number"
-                        onChange={e => setPhone(e.target.value)}
-                        id="phonenum" 
-                        required />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Address</label>
-                        <input type="test" 
-                        className="form-control" 
-                        value={address} 
-                        placeholder="Enter Your Address"
-                        onChange={e => setAddress(e.target.value)}
-                        id="address" 
-                        required />
-                    </div>
-
-                    <div className="form-group">
-                        <label>City</label>
-                        <input type="city" 
-                        className="form-control" 
-                        value={city} 
-                        placeholder="Enter Your City"
-                        onChange={e => setCity(e.target.value)}
-                        id="city" 
-                        required />
-                    </div>
-
-                    <div className="form-group">
-                        <label>ZipCode</label>
-                        <input type="zipcode" 
-                        className="form-control" 
-                        value={zipcode} 
-                        placeholder="Enter Your ZipCode"
-                        onChange={e => setZipcode(e.target.value)}
-                        id="zipcode" 
-                        required />
-                    </div>
-
-                    <div className="form-group mt-3">
-                        <label>State</label>
-                        <select name="states" 
-                        className="form-control"
-                        onChange={e => handlestate(e) }
-                        >
-                            <option value="">Select State</option>
-                            {
-                                stateNames.map((name,index)=>
-                                (
-                                    <option value={name} key={index}>{name}</option>
-                                ))
-                            }
-                        </select>
-
-                    </div>
-                    <div className="form-group mt-3">
-                    <input type="checkbox" 
-                    id="admin" 
-                    name="admin" 
-                    value="admin" />
-                        <label for="vehicle1">admin</label>
-                    </div>
-
-                    <div className="form-group mt-3">
-                        <label>Password:</label>
-                        <input type="password" 
-                        className="form-control" 
-                        value={password} 
-                        placeholder="Enter password"
-                        onChange={e => setPassword(e.target.value)}
-                        id="pwd" required />
-                    </div>
-
-                    <div className="form-group mt-3">
-                        <div className="errors">
-                            {errors.error === true && (<div className="errors">{errors.msg}</div>)}
+        <div>
+            <div className="offset-lg-3 col-lg-6">
+                <form className="container" onSubmit={handlesubmit}>
+                    <div className="card">
+                        <div className="card-header">
+                            <h1>Employee Registeration</h1>
                         </div>
-                        </div>
+                        <div className="card-body">
+                            
 
-                    
-                    <button type="button" 
-                    onClick={submitForm} 
-                    className="btn btn-primary mt-4">Register</button>
-                </div>
+                            <div className="row">
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>Employee ID <span className="errmsg">*</span></label>
+                                        <input value={empid} onChange={e => empidchange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+                                {/* <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>FirstName <span className="errmsg">*</span></label>
+                                        <input value={id} onChange={e => idchange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>LastName <span className="errmsg">*</span></label>
+                                        <input value={id} onChange={e => idchange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div> */}
+                                
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>FirstName  <span className="errmsg">*</span></label>
+                                        <input value={fname} onChange={e => fnamechange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>LastName <span className="errmsg">*</span></label>
+                                        <input value={lname} onChange={e => lnamechange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>Email <span className="errmsg">*</span></label>
+                                        <input value={email} onChange={e => emailchange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>Phone <span className="errmsg"></span></label>
+                                        <input value={phone} onChange={e => phonechange(e.target.value)} className="form-control"></input>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>State <span className="errmsg">*</span></label>
+                                        <select value={state} onChange={e => statechange(e.target.value)} className="form-control">
+                                            <option value="india">TamilNadu</option>
+                                            <option value="usa">Karnataka</option>
+                                            <option value="singapore">Kerala</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div className="col-lg-12">
+                                    <div className="form-group">
+                                        <label>Address</label>
+                                        <input value={address} onChange={e => addresschange(e.target.value)} className="form-control" />
+                                    </div>
+                                </div>
+                                <div className="col-lg-12">
+                                    <div className="form-group">
+                                        <label>City</label>
+                                        <input value={city} onChange={e => citychange(e.target.value)} className="form-control" />
+                                    </div>
+                                </div>
+                                <div className="col-lg-12">
+                                    <div className="form-group">
+                                        <label>ZipCode</label>
+                                        <input value={zipcode} onChange={e => zipcodechange(e.target.value)} className="form-control" />
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>Password <span className="errmsg">*</span></label>
+                                        <input value={password} onChange={e => passwordchange(e.target.value)} type="password" className="form-control"></input>
+                                    </div>
+                                </div>
+                                {/* <div className="col-lg-6">
+                                    <div className="form-group">
+                                        <label>Gender</label>
+                                        <br></br>
+                                        <input type="radio" checked={gender === 'male'} onChange={e => genderchange(e.target.value)} name="gender" value="male" className="app-check"></input>
+                                        <label>Male</label>
+                                        <input type="radio" checked={gender === 'female'} onChange={e => genderchange(e.target.value)} name="gender" value="female" className="app-check"></input>
+                                        <label>Female</label>
+                                    </div>
+                                </div> */}
+
+                            </div>
+
+                        </div>
+                        <div className="card-footer">
+                            <button type="submit" className="btn btn-primary">Register</button> |
+                            <Link to={'/login'} className="btn btn-danger">Login</Link>
+                        </div>
+                    </div>
+                </form>
             </div>
+
+
         </div>
-    )
+    );
 }
+
+export default Register;
