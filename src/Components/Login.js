@@ -16,7 +16,7 @@ export default function Login() {
     const emailvalidation = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     const submitForm = () => {
-       
+
         // if (email === "" && password === "1234") {
         //     navigate("/dashboard")
         // }
@@ -32,15 +32,13 @@ export default function Login() {
         else if (password === "") {
             setErrors({ error: true, msg: "Please Fill Your Password" })
         }
-        else
-        {
-            fetchData("http://localhost:8080/emp/loginPageVerify", "", data).then((res) =>
-             {
-                console.log(res,"data");
-                if (res.email) {
-                    alert('Login successfully.')
+        else {
+            fetchData("http://localhost:8080/emp/loginPageVerify", "", data).then((res) => {
+                console.log(res, "data");
+                if (res.status === 200) {
+                    toast.success("Login successful");
                     navigate('/dashboard');
-                } 
+                }
                 else {
                     toast.warn("Login Failed please enter correct email")
                 }
