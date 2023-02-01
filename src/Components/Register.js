@@ -178,7 +178,7 @@ const Register = () => {
                                         <label>ZipCode</label>
                                         <input value={zipcode} 
                                         onChange={e => zipcodechange(e.target.value)} 
-                                        type="number"
+                                        type="text"
                                         className="form-control" 
                                         id="zipcode" />
                                     </div>
