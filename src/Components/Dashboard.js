@@ -20,7 +20,7 @@ export default function Dashboard() {
     }
     return (
     
-            <div>
+            <div className="dashboard">
 
 
 
@@ -66,7 +66,7 @@ export default function Dashboard() {
                   <th>City</th>
                   <th>State</th>
                   <th>ZipCode</th>
-                  <th>Password</th>
+                  {/* <th>Password</th> */}
                   <th>Admin</th>
                 </tr>
                 <tr>
@@ -79,7 +79,7 @@ export default function Dashboard() {
                   <td>{userdetail.employeeAddress.city}</td>
                   <td>{userdetail.employeeAddress.state}</td>
                   <td>{userdetail.employeeAddress.zipcode}</td>
-                  <td>{userdetail.password}</td>
+                  {/* <td>{userdetail.password}</td> */}
                   <td>{userdetail.admin.toString()}</td>
                 </tr>
                 

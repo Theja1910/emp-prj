@@ -135,6 +135,17 @@ tr:nth-child(even) {
   
 }
 
+.upload-margin{
+margin-top: 20px;
+}
+.tab { 
+  padding: 20px; 
+}
+
+.dashboard{
+  padding: 30px;
+}
+
 .topnav a {
   float: left;
   display: block;
@@ -143,7 +154,6 @@ tr:nth-child(even) {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 17px;
-  font-family: courier new;
   font-weight: bold;
 }
 

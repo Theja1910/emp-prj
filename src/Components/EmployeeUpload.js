@@ -30,7 +30,7 @@ export default function EmployeeUpload() {
   };
 
   return (
-    <div>
+    <div className="tab">
       {/* File Uploader */}
       {/* <input
         type="file"
@@ -42,9 +42,15 @@ export default function EmployeeUpload() {
       <br />
       <br />
       <form onSubmit={handleSubmit}>
+      <span>Please Choose a File</span><br/><pre></pre>
         <input type="file" onChange={handleFileChange} 
         accept=".csv" />
+        <div className="upload-margin">
+
+        <p>
+        Please click the Upload Button</p>
         <button type="submit">Upload</button>
+        </div>
       </form>
       {/* Table */}
       {/* <table>
