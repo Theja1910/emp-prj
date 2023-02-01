@@ -42,7 +42,7 @@ export default function Login() {
                 else {
                     toast.warn("Login Failed please enter correct email")
                 }
-                //navigate('/dashboard');
+                
             })
         }
 
