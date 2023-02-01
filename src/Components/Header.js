@@ -4,7 +4,7 @@ const Header = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const userToken = localStorage.getItem("user");
+    const userToken = localStorage.getItem("email");
 
     const isLoggedIn = () => (userToken ? true : false);
 
