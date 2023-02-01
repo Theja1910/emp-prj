@@ -41,7 +41,7 @@ export default function Login() {
                     navigate("/dashboard");
                 }
                 else {
-                    toast.warn("Login Failed please enter correct email")
+                    toast.warn("Login Failed please enter correct email & password")
                 }
                 
             })
@@ -57,13 +57,13 @@ export default function Login() {
                     <h1 className="text-center mb-3">Login </h1>
                     <div className="form-group">
                         <label>Email address:</label>
-                        {email}
+                        
                         <input type="email" className="form-control" placeholder="Enter email"
                             onChange={e => setEmail(e.target.value)}
                             id="email" />
                     </div>
                     <div className="form-group mt-3">
-                        <label>Password:</label>{password}
+                        <label>Password:</label>
                         <input type="password" className="form-control" placeholder="Enter password"
                             onChange={e => setPassword(e.target.value)}
                             id="pwd" />
