@@ -56,12 +56,14 @@ const Header = () => {
                         <li className="nav-item">
                             <Link to="/dashboard">Dashboard</Link>
                         </li>
-                        
-                        <li className="nav-item">
+                        {userdetail.admin &&(
+
+                            <li className="nav-item">
                             <Link className="nav-link" to="/upload">EmployeeUpload</Link>
                         </li>
+                            )}
                         
-                        <button onClick={logout}>Logout
+                        <button className="logout__button" onClick={logout}>Logout
                         </button>
                     </>
                     

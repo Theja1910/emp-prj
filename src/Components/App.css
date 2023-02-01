@@ -121,6 +121,20 @@ tr:nth-child(even) {
   background-color: #000000;
 }
 
+.logout__button
+{
+  background-color: #0f0f0f;
+  color: #dddddd;
+  float: right;
+  padding: 12px;
+  border: 1px solid #dddddd;
+  margin-top: 2px;
+  margin-right: 2px;
+  position:absolute;
+  right:0;
+  
+}
+
 .topnav a {
   float: left;
   display: block;
@@ -138,7 +152,7 @@ tr:nth-child(even) {
   color: black;
 }
 
-.topnav a.active {
+.topnav a.active{
   background-color: #ff0000;
   color: white;
 }

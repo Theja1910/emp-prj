@@ -18,44 +18,14 @@ export default function Dashboard() {
                 setUserDetail(res)
         )})
     }
-
-    function renderElement() {
-        if (userdetail) {
-            return <div>
-
-<table>
-  <tr>
-    <th>EmployeeID</th>
-    <th>FirstName</th>
-    <th>LastName</th>
-    <th>Email</th>
-    <th>ContactNo</th>
-    <th>Address</th>
-    <th>City</th>
-    <th>State</th>
-    <th>ZipCode</th>
-    <th>Password</th>
-    <th>Admin</th>
-  </tr>
-  <tr>
-    <td>{userdetail.empId}</td>
-    <td>{userdetail.firstName}</td>
-    <td>{userdetail.lastName}</td>
-    <td>{userdetail.email}</td>
-    <td>{userdetail.contactNo}</td>
-    <td>{userdetail.address}</td>
-    <td>{userdetail.city}</td>
-    <td>{userdetail.state}</td>
-    <td>{userdetail.zipcode}</td>
-    <td>{userdetail.password}</td>
-    <td>{userdetail.admin}</td>
-  </tr>
-  
-</table>
+    return (
+    
+            <div>
 
 
 
-                {/* <h4>Employee Id</h4>
+{/* 
+                <h4>Employee Id</h4>
                 <p>{userdetail.empId}</p>
                 <h4>FirstName</h4>
                 <p>{userdetail.firstName}</p>
@@ -65,10 +35,10 @@ export default function Dashboard() {
                 <p>{userdetail.email}</p>
                 <h4>contactNo</h4>
                 <p>{userdetail.contactNo}</p>
-                {/* <h4>Employee Address</h4>
-                <p>{userdetail.employeeAddress}</p> */}
-                {/* <h5>Address</h5>
-                <p>{userdetail.address}</p>
+                 <h4>Employee Address</h4>
+                <p>{userdetail.employeeAddress}</p> 
+                <h5>Address</h5>
+                <p>{userdetail.employeeAddress.address}</p>
                 <h5>City</h5>
                 <p>{userdetail.city}</p>
                 <h5>State</h5>
@@ -79,18 +49,44 @@ export default function Dashboard() {
                 <p>{userdetail.password}</p>
                 <h5>Admin</h5>
                 <p>{userdetail.admin}</p> */}
-            </div>
             
-        } else {
-            return <p>Loading.....</p>
-        }
 
-    }
-
-    return (
+    
         <div>
             <h1 className='mb-4 mt-4'>Dashboard page</h1>
-            {renderElement()}
+            {Object.keys(userdetail).length === 0 ?"Loading" : (
+                <table>
+                <tr>
+                  <th>EmployeeID</th>
+                  <th>FirstName</th>
+                  <th>LastName</th>
+                  <th>Email</th>
+                  <th>ContactNo</th>
+                  <th>Address</th>
+                  <th>City</th>
+                  <th>State</th>
+                  <th>ZipCode</th>
+                  <th>Password</th>
+                  <th>Admin</th>
+                </tr>
+                <tr>
+                  <td>{userdetail.empId}</td>
+                  <td>{userdetail.firstName}</td>
+                  <td>{userdetail.lastName}</td>
+                  <td>{userdetail.email}</td>
+                  <td>{userdetail.contactNo}</td>
+                  <td>{userdetail.employeeAddress.address}</td>
+                  <td>{userdetail.employeeAddress.city}</td>
+                  <td>{userdetail.employeeAddress.state}</td>
+                  <td>{userdetail.employeeAddress.zipcode}</td>
+                  <td>{userdetail.password}</td>
+                  <td>{userdetail.admin.toString()}</td>
+                </tr>
+                
+              </table>
+              
+            )}
         </div>
+            </div>
     )
 }
