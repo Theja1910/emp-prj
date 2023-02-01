@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 import "../Components/App.css"
 
 export default function EmployeeUpload() {
@@ -21,10 +22,10 @@ export default function EmployeeUpload() {
       // const data = await response;
       // console.log(data);
       if (response.status === 200) {
-        console.log("file uploaded successfully")
+        toast.success("file uploaded successfully")
       }
     } catch (error) {
-      console.error(error);
+      toast.error(error);
     }
   };
 

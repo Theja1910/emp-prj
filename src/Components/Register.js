@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { fetchData } from "../Auth/Helper";
-import "../Components/App.css"
+//import "../Components/App.css"
 
 const Register = () => {
 
@@ -17,6 +17,7 @@ const Register = () => {
     const [state, statechange] = useState("");
     const [city, citychange] = useState("");
     const [zipcode, zipcodechange] = useState("");
+    const [isChecked,setIsChecked]=useState(false)
     
 
     const navigate = useNavigate();
@@ -77,21 +78,27 @@ const Register = () => {
             {
                 address, city, zipcode, state
             },
-            password
+            password,
+            admin:isChecked
         };
         if (IsValidate()) {
             //console.log(data);
             fetchData("http://localhost:8080/emp/registration", "", data)
-                .then((res) => {
+                .then(async(res) => {
 
-                    if (res) {
+                    if (!res.ok) {
+                        const message=await res.json()
+                        toast.warn(message.errorMessage[0])
+                    } else {
                         toast.success('Registered successfully.')
                         navigate('/login');
-                    } else {
-                        toast.warn("Register not successful")
                     }
                 })
         }
+    }
+
+    function handleCheckbox(){
+        setIsChecked(!isChecked)
     }
     return (
         <div>
@@ -212,6 +219,10 @@ const Register = () => {
                                 </div>
 
                             </div >
+<div>
+                            <input id="admin" type="checkbox" checked={isChecked} onChange={handleCheckbox} />
+<label htmlFor="admin">admin</label>
+</div>
 
                         </div >
                         <div className="card-footer">
