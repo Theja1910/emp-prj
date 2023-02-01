@@ -7,7 +7,6 @@ import "../Components/App.css"
 
 const Register = () => {
 
-    //const [id, idchange] = useState("");
     const [empid, empidchange] = useState("");
     const [fname, fnamechange] = useState("");
     const [lname, lnamechange] = useState("");
@@ -18,17 +17,14 @@ const Register = () => {
     const [state, statechange] = useState("");
     const [city, citychange] = useState("");
     const [zipcode, zipcodechange] = useState("");
-    // const [gender, genderchange] = useState("female");
+    
 
     const navigate = useNavigate();
 
     const IsValidate = () => {
         let isproceed = true;
         let errormessage = 'Please enter the value in ';
-        // if (empid === null || empid === '') {
-        //     isproceed = false;
-        //     errormessage += ' Username';
-        // }
+    
         if (empid === null || empid === '') {
             isproceed = false;
             errormessage += ' Employee Id';
@@ -95,9 +91,6 @@ const Register = () => {
                         toast.warn("Register not successful")
                     }
                 })
-            //  .catch((err) => {
-            //     toast.error('Failed :' + err.message);
-            // });
         }
     }
     return (
@@ -112,76 +105,104 @@ const Register = () => {
                             <div className="row">
                                 <div className="col-lg-6">
                                     <div className="form-group">
-                                        <label>Employee ID <span className="errmsg">*</span></label>
-                                        <input value={empid} onChange={e => empidchange(e.target.value)} className="form-control"></input>
+                                        <label>Employee ID 
+                                            <span className="errmsg">*</span>
+                                            </label>
+                                        <input value={empid} 
+                                        onChange={e => empidchange(e.target.value)} 
+                                        className="form-control" id="empid" />
                                     </div>
                                 </div>
-                                {/* <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>FirstName <span className="errmsg">*</span></label>
-                                        <input value={id} onChange={e => idchange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div>
+                               
                                 <div className="col-lg-6">
                                     <div className="form-group">
-                                        <label>LastName <span className="errmsg">*</span></label>
-                                        <input value={id} onChange={e => idchange(e.target.value)} className="form-control"></input>
-                                    </div>
-                                </div> */}
-                                <div className="col-lg-6">
-                                    <div className="form-group">
-                                        <label>Email <span className="errmsg">*</span></label>
-                                        <input value={email} onChange={e => emailchange(e.target.value)} className="form-control"></input>
+                                        <label>Email 
+                                            <span className="errmsg">*</span></label>
+                                        <input value={email} 
+                                        onChange={e => emailchange(e.target.value)} 
+                                        className="form-control" 
+                                        id="email" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="form-group">
-                                        <label>FirstName  <span className="errmsg">*</span></label>
-                                        <input value={fname} onChange={e => fnamechange(e.target.value)} className="form-control"></input>
+                                        <label>FirstName  
+                                            <span className="errmsg">*</span></label>
+                                        <input value={fname} 
+                                        onChange={e => fnamechange(e.target.value)} 
+                                        className="form-control" 
+                                        id="fname" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="form-group">
-                                        <label>LastName <span className="errmsg">*</span></label>
-                                        <input value={lname} onChange={e => lnamechange(e.target.value)} className="form-control"></input>
+                                        <label>LastName 
+                                            <span className="errmsg">*</span></label>
+                                        <input value={lname} 
+                                        onChange={e => lnamechange(e.target.value)} 
+                                        className="form-control" 
+                                        id="lname" />
                                     </div>
                                 </div>
 
                                 <div className="col-lg-6">
                                     <div className="form-group">
-                                        <label>Phone <span className="errmsg"></span></label>
-                                        <input value={phone} onChange={e => phonechange(e.target.value)} className="form-control"></input>
+                                        <label>Phone 
+                                            <span className="errmsg"></span></label>
+                                        <input value={phone} 
+                                        onChange={e => phonechange(e.target.value)} 
+                                        className="form-control" 
+                                        id="phone" />
                                     </div>
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="form-group">
                                         <label> Address</label>
-                                        <input value={address} onChange={e => addresschange(e.target.value)} className="form-control" />
+                                        <input value={address} 
+                                        onChange={e => addresschange(e.target.value)} 
+                                        className="form-control" 
+                                        id="address" />
                                     </div>
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="form-group">
                                         <label>City</label>
-                                        <input value={city} onChange={e => citychange(e.target.value)} className="form-control" />
+                                        <input value={city} 
+                                        onChange={e => citychange(e.target.value)} 
+                                        className="form-control" 
+                                        id="city" />
                                     </div>
                                 </div>
                                 <div className="col-lg-12">
                                     <div className="form-group">
                                         <label>ZipCode</label>
-                                        <input value={zipcode} onChange={e => zipcodechange(e.target.value)} type="number" className="form-control" />
+                                        <input value={zipcode} 
+                                        onChange={e => zipcodechange(e.target.value)} 
+                                        type="number"
+                                        className="form-control" 
+                                        id="zipcode" />
                                     </div>
                                 </div>
 
                                 <div className="col-lg-6">
                                     <div className="form-group">
-                                        <label>Password <span className="errmsg">*</span></label>
-                                        <input value={password} onChange={e => passwordchange(e.target.value)} type="password" className="form-control"></input>
+                                        <label>Password 
+                                            <span className="errmsg">*</span></label>
+                                        <input value={password} 
+                                        onChange={e => passwordchange(e.target.value)} 
+                                        type="password"
+                                        className="form-control" 
+                                        id="password" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="form-group">
-                                        <label>State <span className="errmsg">*</span></label>
-                                        <select value={state} onChange={e => statechange(e.target.value)} className="form-control">
+                                        <label>State 
+                                            <span className="errmsg">*</span></label>
+                                        <select value={state} 
+                                        onChange={e => statechange(e.target.value)} 
+                                        className="form-control" 
+                                        id="state">
                                             <option value="">Select State</option>
                                             <option value="tamilnadu">TamilNadu</option>
                                             <option value="karnataka">Karnataka</option>
@@ -194,14 +215,13 @@ const Register = () => {
 
                         </div >
                         <div className="card-footer">
-                            <button type="submit" className="btn btn-primary">Register</button> |
+                            <button type="submit" 
+                            className="btn btn-primary">Register</button> |
                             <Link to={'/login'} className="btn btn-danger">Login</Link>
                         </div>
                     </div >
                 </form >
             </div >
-
-
         </div >
     );
 }
