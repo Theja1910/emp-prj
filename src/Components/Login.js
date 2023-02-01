@@ -37,7 +37,8 @@ export default function Login() {
                 console.log(res, "data");
                 if (res.status === 200) {
                     toast.success("Login successful");
-                    navigate('/dashboard');
+                    localStorage.setItem("email", email);
+                    navigate("/dashboard");
                 }
                 else {
                     toast.warn("Login Failed please enter correct email")

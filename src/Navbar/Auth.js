@@ -10,10 +10,10 @@ import EmployeeUpload from '../Components/EmployeeUpload';
 
 function Auth() {
     const navigate = useNavigate();
-    const {token} = {token : 'test',logout:"logout"};
+    const { token } = { token: 'test', logout: "logout" };
     const logoutUser = () => {
-        if(token !== ""){
-            
+        if (token !== "") {
+
             navigate('/login');
         }
     }
@@ -40,7 +40,7 @@ function Auth() {
                         <span role="button" className="nav-link logoutuser" onClick={logoutUser}>Logout</span>
                         {/* <Link className="nav-link" to="/logout" >Logout</Link> */}
                     </li>
-                    
+
 
                 </ul>
 

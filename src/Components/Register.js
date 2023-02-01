@@ -79,7 +79,7 @@ const Register = () => {
             contactNo: phone,
             employeeAddress:
             {
-                address,city, zipcode, state
+                address, city, zipcode, state
             },
             password
         };
