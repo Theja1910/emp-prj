@@ -5,6 +5,8 @@ import "../Components/App.css"
 export default function EmployeeUpload() {
 
   const [file, setFile] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(null);
+
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -12,6 +14,7 @@ export default function EmployeeUpload() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsDisabled(true)
     const formData = new FormData();
     formData.append('File', file);
     try {
@@ -21,8 +24,11 @@ export default function EmployeeUpload() {
       });
       // const data = await response;
       // console.log(data);
+      setIsDisabled(false)
       if (response.status === 200) {
+        setFile(null)
         toast.success("file uploaded successfully")
+        setIsDisabled(false)
       }
     } catch (error) {
       toast.error(error);
@@ -42,14 +48,14 @@ export default function EmployeeUpload() {
       <br />
       <br />
       <form onSubmit={handleSubmit}>
-      <span>Please Choose a File</span><br/><pre></pre>
-        <input type="file" onChange={handleFileChange} 
-        accept=".csv" />
+        <span>Please Choose a File</span><br /><pre></pre>
+        <input type="file" onChange={handleFileChange}
+          accept=".csv" />
         <div className="upload-margin">
 
-        <p>
-        Please click the Upload Button</p>
-        <button type="submit">Upload</button>
+          <p>
+            Please click the Upload Button</p>
+          <button disabled={isDisabled} type="submit">Upload</button>
         </div>
       </form>
       {/* Table */}
