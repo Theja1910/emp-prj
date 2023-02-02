@@ -29,7 +29,10 @@ export default function EmployeeUpload() {
         setFile(null)
         toast.success("file uploaded successfully")
         setIsDisabled(false)
-        window.location.reload();
+        
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500)
       }
     } catch (error) {
       toast.error(error);
