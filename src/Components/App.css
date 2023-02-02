@@ -82,7 +82,18 @@ a{
 .logoutuser{
   color: white !important;
 }
+.checkboxes {
+  /* //text-align:right; */
+  padding: 12px;
+}
 
+.checkboxes input{
+  margin: 2px;
+}
+
+.checkboxes label{
+  margin:  5px;
+}
 
 .app-check{
   height: 20px;

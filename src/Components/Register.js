@@ -234,14 +234,17 @@ const Register = () => {
                                             <option value="tamilnadu">TamilNadu</option>
                                             <option value="karnataka">Karnataka</option>
                                             <option value="kerala">Kerala</option>
+                                            <option value="andhra">Andhra Pradesh</option>
+                                            <option value="assam">Assam</option>
+                                            <option value="maharastra">Maharastra</option>
                                         </select>
                                     </div>
                                 </div>
 
                             </div >
-                            <div>
+                            <div className="checkboxes">
                                 <input id="admin" type="checkbox" checked={isChecked} onChange={handleCheckbox} />
-                                <label htmlFor="admin">admin</label>
+                                <label>Admin</label>
                             </div>
 
                         </div >
