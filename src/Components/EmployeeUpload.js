@@ -29,6 +29,9 @@ export default function EmployeeUpload() {
         setFile(null)
         toast.success("file uploaded successfully")
         setIsDisabled(false)
+        setTimeout(() => {
+
+        }, 1000)
       }
     } catch (error) {
       toast.error(error);
