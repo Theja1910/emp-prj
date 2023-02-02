@@ -29,6 +29,7 @@ export default function EmployeeUpload() {
         setFile(null)
         toast.success("file uploaded successfully")
         setIsDisabled(false)
+        window.location.reload();
       }
     } catch (error) {
       toast.error(error);
