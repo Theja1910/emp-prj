@@ -36,10 +36,10 @@ const Register = () => {
         let isproceed = true;
         let errormessage = 'Please enter the value in ';
 
-        // if (empid === null || empid === '') {
-        //     isproceed = false;
-        //     errormessage += ' Employee Id';
-        // }
+        if (checkOnlyNum(empid)) {
+            isproceed = false;
+            errormessage += 'Number character in Employee Id';
+        }
         if (fname === null || fname === '') {
             isproceed = false;
             errormessage += ' Firstname';
