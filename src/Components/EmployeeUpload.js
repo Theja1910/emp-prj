@@ -25,7 +25,7 @@ export default function EmployeeUpload() {
       // const data = await response;
       // console.log(data);
       setIsDisabled(false)
-      toast.error("please choose file")
+      // toast.error("please choose file")
       if (response.status === 200) {
         setFile(null)
         toast.success("file uploaded successfully")
