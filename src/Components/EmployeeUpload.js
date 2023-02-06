@@ -25,6 +25,7 @@ export default function EmployeeUpload() {
       // const data = await response;
       // console.log(data);
       setIsDisabled(false)
+      toast.error("please choose file")
       if (response.status === 200) {
         setFile(null)
         toast.success("file uploaded successfully")
@@ -54,7 +55,7 @@ export default function EmployeeUpload() {
       <form onSubmit={handleSubmit}>
         <span>Please Choose a File</span><br /><pre></pre>
         <input type="file" onChange={handleFileChange}
-          accept=".csv" />
+          accept=".csv"  required/>
         <div className="upload-margin">
 
           <p>
