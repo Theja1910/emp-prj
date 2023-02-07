@@ -57,10 +57,15 @@ const Header = () => {
                                 <Link to="/dashboard">Dashboard</Link>
                             </li>
                             {userdetail.admin && (
+                                <>
 
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/upload">EmployeeUpload</Link>
                                 </li>
+                                <li className="nav-item">
+                                <Link className="nav-link" to="/all-users-details">All Employee Details</Link>
+                            </li>
+                                </>
                             )}
                             <div className="userdetail">
                                 <span> {userdetail.firstName}</span>
