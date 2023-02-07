@@ -21,11 +21,7 @@ export default function AllEmployeeDetails() {
             <div className="dashboard">
         <div>
             <h1 className='mb-4 mt-4'>All User Details</h1>
-            {allUserDetails.length === 0 ?"Loading" : (
-                allUserDetails?.map(allUserDetails=>(
-
-                
-                <table>
+            <table>
                 <tr>
                   <th>EmployeeID</th>
                   <th>FirstName</th>
@@ -38,6 +34,8 @@ export default function AllEmployeeDetails() {
                   <th>ZipCode</th>
                   <th>Admin</th>
                 </tr>
+            {allUserDetails.length === 0 ?"Loading" : (
+                allUserDetails?.map(allUserDetails=>(
                 <tr>
                   <td>{allUserDetails.empId}</td>
                   <td>{allUserDetails.firstName}</td>
@@ -51,11 +49,11 @@ export default function AllEmployeeDetails() {
                   <td>{allUserDetails.admin.toString()}</td>
                   {console.log(allUserDetails.admin,"details")}
                 </tr>
-                
-              </table>
               ))
               
             )}
+                
+              </table>
         </div>
             </div>
     )
