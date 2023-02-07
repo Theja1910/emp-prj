@@ -70,6 +70,10 @@ const Register = () => {
             isproceed = false;
             errormessage += ' Email';
         }
+        if (checkOnlyNum(zipcode)) {
+            isproceed = false;
+            errormessage += ' numeric character in Zipcode';
+        }
 
         if (!isproceed) {
             toast.warning(errormessage)

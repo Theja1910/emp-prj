@@ -6,10 +6,13 @@ export default function EmployeeUpload() {
 
   const [file, setFile] = useState(null);
   const [isDisabled, setIsDisabled] = useState(null);
-
+  //const [number,setNumber]= useState();
+  const [message, setMessage] = useState(null);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
+    // setNumber(event.target.files.length);    
+    // console.log(number,"count");
   };
 
   const handleSubmit = async (event) => {
@@ -20,20 +23,24 @@ export default function EmployeeUpload() {
     try {
       const response = await fetch('http://localhost:8080/emp/uploadFile', {
         method: 'POST',
-        body: formData
+        body: formData,
+
       });
+
       // const data = await response;
       // console.log(data);
       setIsDisabled(false)
-      // toast.error("please choose file")
       if (response.status === 200) {
+        const responseJson = await response.json()
+        setMessage(responseJson);
+        console.log("response", responseJson)
         setFile(null)
-        toast.success("file uploaded successfully")
+        toast.success("File Uploaded Successful");
         setIsDisabled(false)
-        
+
         setTimeout(() => {
           window.location.reload();
-        }, 1500)
+        }, 1800)
       }
     } catch (error) {
       toast.error(error);
@@ -55,14 +62,26 @@ export default function EmployeeUpload() {
       <form onSubmit={handleSubmit}>
         <span>Please Choose a File</span><br /><pre></pre>
         <input type="file" onChange={handleFileChange}
-          accept=".csv"  required/>
+          accept=".csv"
+          required
+        // multiple = "multiple"
+        />
         <div className="upload-margin">
 
           <p>
             Please click the Upload Button</p>
           <button disabled={isDisabled} type="submit">Upload</button>
+
+          <div>
+            {message?.count}
+            Records uploaded successfully
+          </div>
+
         </div>
       </form>
+      {/* <div>
+            <button onClick={counthandler}>Count</button>
+          </div> */}
       {/* Table */}
       {/* <table>
         <thead>
