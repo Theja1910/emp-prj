@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { fetchData } from "../Auth/Helper";
 import { toast } from "react-toastify";
 import "../Components/App.css"
-//import AuthUser from './AuthUser';
+
 
 export default function Login() {
-    // const {http,setToken} = AuthUser();
+    
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -16,13 +16,6 @@ export default function Login() {
     const emailvalidation = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     const submitForm = () => {
-
-        // if (email === "" && password === "1234") {
-        //     navigate("/dashboard")
-        // }
-        // else {
-        //     alert("Please enter Valid Input Fields");
-        // }
         if (email === "") {
             setErrors({ error: true, msg: "Please Fill Your Email" })
         }

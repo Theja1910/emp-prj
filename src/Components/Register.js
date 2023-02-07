@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { fetchData } from "../Auth/Helper";
-//import "../Components/App.css"
 
 const Register = () => {
 
@@ -23,7 +22,7 @@ const Register = () => {
     const navigate = useNavigate();
 
     function hasSpecialChar(str) {
-        const pattern = /[^a-zA-Z]/;
+        const pattern = /[^a-zA-Z]^\s+/;
         return pattern.test(str);
     }
 
@@ -34,29 +33,30 @@ const Register = () => {
 
     const IsValidate = () => {
         let isproceed = true;
-        let errormessage = 'Please enter the value in ';
+        let errormessage = 'Please Enter ';
 
         if (checkOnlyNum(empid)) {
             isproceed = false;
-            errormessage += 'Number character in Employee Id';
+            errormessage += ' Number in Employee Id';
         }
-        if (fname === null || fname === '') {
+        if (fname === "") {
+            console.log("text");
             isproceed = false;
             errormessage += ' Firstname';
         } else if (hasSpecialChar(fname)) {
             isproceed = false;
-            errormessage += ' alphabetic character in First Name\n';
+            errormessage += ' character in First Name\n';
         }
-        if (lname === null || lname === '') {
+        if (lname === null) {
             isproceed = false;
             errormessage += ' Lastname';
         } else if (hasSpecialChar(fname)) {
             isproceed = false;
-            errormessage += ' alphabetic character in last Name';
+            errormessage += ' character in last Name';
         }
         if (checkOnlyNum(phone)) {
             isproceed = false;
-            errormessage += ' numeric character in Phone';
+            errormessage += ' Number in Phone';
         }
         if (password === null || password === '') {
             isproceed = false;
@@ -64,7 +64,7 @@ const Register = () => {
         }
         if (state === null || state === '') {
             isproceed = false;
-            errormessage += ' State';
+            errormessage += ' Select the State';
         }
         if (email === null || email === '') {
             isproceed = false;
@@ -72,7 +72,7 @@ const Register = () => {
         }
         if (checkOnlyNum(zipcode)) {
             isproceed = false;
-            errormessage += ' numeric character in Zipcode';
+            errormessage += ' Enter number in Zipcode';
         }
 
         if (!isproceed) {
@@ -91,7 +91,6 @@ const Register = () => {
 
     const handlesubmit = (e) => {
         e.preventDefault();
-        // const address = { "empId": "323546", "firstName": "Divya", "lastName": "singh", "email": "rajnish.singh@perficient.com", "contactNo": 676674447, "address": { "city": "Bangalore", "state": "Karnataka", "zipcode": 5768688 }, "password": "Shabaz" }
         let data = {
             empId: empid,
             firstName: fname,
@@ -106,7 +105,6 @@ const Register = () => {
             admin: isChecked
         };
         if (IsValidate()) {
-            //console.log(data);
             fetchData("http://localhost:8080/emp/registration", "", data)
                 .then(async (res) => {
 

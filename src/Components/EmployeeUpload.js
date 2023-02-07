@@ -24,24 +24,24 @@ export default function EmployeeUpload() {
 
       });
 
-      // const data = await response;
-      // console.log(data);
       setIsDisabled(false)
       if (response.status === 200) {
         const responseJson = await response.json()
         setMessage(responseJson);
         console.log("response", responseJson)
         setFile(null)
-        toast.success("File Uploaded Successfully");
-        toast.success(responseJson.count + " Records Uploaded Successfully");
+        toast.success(responseJson.count + " Record Uploaded Successfully");
         setIsDisabled(false)
 
         setTimeout(() => {
           window.location.reload();
         },2500)
+      }else
+      {
+        toast.warn(" File Alreday uploaded");
       }
-    } catch (error) {
-      toast.error(error);
+    } catch (errorMessage) {
+      toast.warn(" File Alreday uploaded");
     }
   };
 
