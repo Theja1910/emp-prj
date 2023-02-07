@@ -36,12 +36,12 @@ export default function EmployeeUpload() {
         setTimeout(() => {
           window.location.reload();
         },2500)
-      }else
-      {
-        toast.warn(" File Alreday uploaded");
       }
-    } catch (errorMessage) {
-      toast.warn(" File Alreday uploaded");
+      else{
+        toast.warn("File Alreday uploaded");
+      }
+    } catch (error) {
+      toast.warn("File Alreday uploaded");
     }
   };
 

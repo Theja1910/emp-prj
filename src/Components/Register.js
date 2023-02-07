@@ -34,10 +34,13 @@ const Register = () => {
     const IsValidate = () => {
         let isproceed = true;
         let errormessage = 'Please Enter ';
-
+        if (empid === "") {
+            isproceed = false;
+            errormessage += ' Employee Id';
+        }
         if (checkOnlyNum(empid)) {
             isproceed = false;
-            errormessage += ' Number in Employee Id';
+            errormessage += ' Number Employee Id';
         }
         if (fname === "") {
             console.log("text");
