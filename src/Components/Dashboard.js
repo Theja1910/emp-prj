@@ -37,17 +37,17 @@ export default function Dashboard() {
                             <th>Admin</th>
                         </tr>
                         <tr>
-                            <td>{userdetail.empId}</td>
-                            <td>{userdetail.firstName}</td>
-                            <td>{userdetail.lastName}</td>
-                            <td>{userdetail.email}</td>
-                            <td>{userdetail.contactNo}</td>
-                            <td>{userdetail.employeeAddress.address}</td>
-                            <td>{userdetail.employeeAddress.city}</td>
-                            <td>{userdetail.employeeAddress.state}</td>
-                            <td>{userdetail.employeeAddress.zipcode}</td>
-                            <td>{userdetail.admin.toString()}</td>
-                            {console.log(userdetail.admin, "details")}
+                            <td>{userdetail?.empId}</td>
+                            <td>{userdetail?.firstName}</td>
+                            <td>{userdetail?.lastName}</td>
+                            <td>{userdetail?.email}</td>
+                            <td>{userdetail?.contactNo}</td>
+                            <td>{userdetail?.employeeAddress?.address}</td>
+                            <td>{userdetail?.employeeAddress?.city}</td>
+                            <td>{userdetail?.employeeAddress?.state}</td>
+                            <td>{userdetail?.employeeAddress?.zipcode}</td>
+                            <td>{userdetail?.admin?.toString()}</td>
+                            {/* {console.log(userdetail.admin, "details")} */}
                         </tr>
 
                     </table>

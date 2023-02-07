@@ -21,7 +21,7 @@ export default function AllEmployeeDetails() {
 
     <div className="dashboard">
       <div>
-        <h1 className='mb-4 mt-4'>All User Details</h1>
+        <h1 className='mb-4 mt-4'>All Employee Details</h1>
         <table>
           <tr>
             <th>EmployeeID</th>
