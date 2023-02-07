@@ -6,6 +6,7 @@ import Header from "./Header";
 import Login from "./Login";
 import ProtectedRoutes from "./ProtectedRoutes";
 import EmployeeUpload from "./EmployeeUpload";
+import AllEmployeeDetails from "./AllEmployeeDetails";
 
 const AppRouter = () => {
     return (
@@ -19,6 +20,7 @@ const AppRouter = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/upload" element={<EmployeeUpload />} />
+                <Route path="/all-users-details" element={<AllEmployeeDetails />} />
             </Routes>
         </Router>
     );

@@ -46,6 +46,7 @@ export default function Dashboard() {
                   <td>{userdetail.employeeAddress.state}</td>
                   <td>{userdetail.employeeAddress.zipcode}</td>
                   <td>{userdetail.admin.toString()}</td>
+                  {console.log(userdetail.admin,"details")}
                 </tr>
                 
               </table>
