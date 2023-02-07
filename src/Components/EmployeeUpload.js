@@ -6,13 +6,10 @@ export default function EmployeeUpload() {
 
   const [file, setFile] = useState(null);
   const [isDisabled, setIsDisabled] = useState(null);
-  //const [number,setNumber]= useState();
   const [message, setMessage] = useState(null);
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
-    // setNumber(event.target.files.length);    
-    // console.log(number,"count");
   };
 
   const handleSubmit = async (event) => {
@@ -35,12 +32,13 @@ export default function EmployeeUpload() {
         setMessage(responseJson);
         console.log("response", responseJson)
         setFile(null)
-        toast.success("File Uploaded Successful");
+        toast.success("File Uploaded Successfully");
+        toast.success(responseJson.count + " Records Uploaded Successfully");
         setIsDisabled(false)
 
         setTimeout(() => {
           window.location.reload();
-        }, 1800)
+        },2500)
       }
     } catch (error) {
       toast.error(error);
@@ -49,14 +47,6 @@ export default function EmployeeUpload() {
 
   return (
     <div className="tab">
-      {/* File Uploader */}
-      {/* <input
-        type="file"
-        name="file"
-        onChange={changeHandler}
-        accept=".csv"
-        style={{ display: "block", margin: "10px auto" }}
-      /> */}
       <br />
       <br />
       <form onSubmit={handleSubmit}>
@@ -71,38 +61,8 @@ export default function EmployeeUpload() {
           <p>
             Please click the Upload Button</p>
           <button disabled={isDisabled} type="submit">Upload</button>
-
-          <div>
-            {message?.count}
-            Records uploaded successfully
-          </div>
-
         </div>
       </form>
-      {/* <div>
-            <button onClick={counthandler}>Count</button>
-          </div> */}
-      {/* Table */}
-      {/* <table>
-        <thead>
-          <tr>
-            {tableRows.map((rows, index) => {
-              return <th key={index}>{rows}</th>;
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {values.map((value, index) => {
-            return (
-              <tr key={index}>
-                {value.map((val, i) => {
-                  return <td key={i}>{val}</td>;
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table> */}
     </div>
   );
 }

@@ -50,8 +50,7 @@ const Header = () => {
                 )}
                 
                 {isLoggedIn() && ( 
-                    // if(userdetail.admin== true)
-                    
+                     
                     <>
                         <li className="nav-item">
                             <Link to="/dashboard">Dashboard</Link>
@@ -62,6 +61,10 @@ const Header = () => {
                             <Link className="nav-link" to="/upload">EmployeeUpload</Link>
                         </li>
                             )}
+                            <div className="userdetail">
+                               <span> {userdetail.firstName}</span>
+                                <span className="lastname">{userdetail.lastName}</span>
+                            </div>
                         
                         <button className="logout__button" onClick={logout}>Logout
                         </button>
